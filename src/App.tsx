@@ -23,13 +23,6 @@ type filmsType = {
   }
 };
 
-type singleFilmType = {
-  director: string,
-  id: string,
-  releaseDate: string,
-  title: string,
-}
-
 const theme = createTheme({
   palette: {
     primary: blue,
@@ -137,6 +130,14 @@ function App() {
   const renderFilms = () => (
     <>
       <Grid container spacing={2}>
+        <Grid lg={12} md={12} xs={12} item>
+          <Typography sx={{ fontSize: 42 }} color="text.secondary" gutterBottom>
+            StarWars API
+          </Typography>
+          <Typography variant="subtitle1">
+            <a target="_blank" href="https://graphql.org/">GraphQL</a>, <a href="https://www.typescriptlang.org/" target="_blank">TypeScript</a>, <a href="https://reactjs.org/" target="_blank">ReactJS</a> and the new <a target="_blank" href="https://mui.com/">MaterialUI</a> exemple
+          </Typography>
+        </Grid>
         <FormControl fullWidth>
           <InputLabel>Director</InputLabel>
           <Select
