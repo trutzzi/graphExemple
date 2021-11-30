@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ENDPOINTURL, FILMSGRAPH } from './graphql';
+import { ENDPOINTURL } from './graphql';
 import { InMemoryCache, ApolloProvider, ApolloClient } from '@apollo/client';
 
 const client = new ApolloClient({

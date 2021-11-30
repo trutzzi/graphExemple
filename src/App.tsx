@@ -9,6 +9,7 @@ import {
 import { blue, blueGrey } from '@mui/material/colors';
 
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CharDrawer from './CharDrawers';
 
 type filmsType = {
   allFilms: {
@@ -19,6 +20,19 @@ type filmsType = {
       title: string,
       __typename: string,
       openingCrawl: string
+      characterConnection: {
+        edges:
+        [
+          node: {
+            gender: string,
+            id: string,
+            name: string,
+            species: string,
+            __typename: string,
+          },
+          __typename: string
+        ]
+      }
     }[]
   }
 };
@@ -86,6 +100,10 @@ function App() {
     setDirectorFilter(event.target.value);
   }
 
+  const renderCharacterConnection = (items: any, title: string) => {
+    return <CharDrawer title={title} items={items.edges} />
+  }
+
   const renderFilmBlocks = () => {
     let myFilmList;
     if (directorFilter !== ' ') {
@@ -94,7 +112,7 @@ function App() {
       myFilmList = getAllFilms();
     }
 
-    return myFilmList?.map(({ title, director, releaseDate, openingCrawl, id }) => {
+    return myFilmList?.map(({ title, director, releaseDate, openingCrawl, id, characterConnection }) => {
       return (
         <Grid item lg={4} md={6} xs={12}>
           <Card key={id}>
@@ -111,7 +129,8 @@ function App() {
                   </Typography>
                 </CardContent>
               </Collapse>
-              <br />
+
+              {renderCharacterConnection(characterConnection, title)}
               <ExpandMore
                 expand={isExpanded(id)}
                 onClick={() => handleExpandClick(id)}
