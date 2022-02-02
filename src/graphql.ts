@@ -33,3 +33,29 @@ query GetExchangeRates {
     }
   }
 `;
+
+export type FilmsType = {
+  allFilms: {
+    films: {
+      director: string,
+      id: string,
+      releaseDate: string,
+      title: string,
+      __typename: string,
+      openingCrawl: string
+      characterConnection: {
+        edges:
+        [
+          node: {
+            gender: string,
+            id: string,
+            name: string,
+            species: string,
+            __typename: string,
+          },
+          __typename: string
+        ]
+      }
+    }[]
+  }
+};
